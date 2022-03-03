@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>caro2</title>
+</head>
+<style>
+td{
+    width: 40px;
+    height: 40px;
+}
+
+</style>
+<body>
+
+<table id="Board" border="1">
+
+</table>
+</body>
+</html>
+<script>
+    let player1= 1;
+    let player2= 2;
+    let turn= player1
+    let row=15;
+    let col =15
+    function createBoard(){
+        let x='';
+        for (let i = 0; i < row; i++) {
+            x+='<tr>';
+            for (let j = 0; j < col; j++) {
+                x+='<td onclick="clickCell(this)" >'+'</td>'
+            }x+='</tr>';
+        }
+       document.getElementById('Board').innerHTML=x
+    }
+    createBoard()
+    function clickCell(cell){
+        console.log('cell=====',cell)
+        if(cell.innerHTML ==''){
+            if (turn == player1){
+                cell.innerHTML='X'
+                console.log('cell=====',cell)
+                turn = player2;
+            }else{
+                cell.innerHTML='O'
+                turn=player1
+            }
+        }
+    }
+</script>
