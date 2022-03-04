@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>anyword</title>
+</head>
+<style>
+    td {
+        width: 40px;
+        height: 40px;
+    }
+</style>
+<body>
+<table border="1" id="board">
+</table>
+</body>
+</html>
+<script>
+
+    let row = 10
+    let col = 10
+    let player1 = 1;
+    let player2 = 2;
+    let turn = player1;
+    // function createBoard(){
+    //     for (let i = 0; i < row; i++) {
+    //         x+='<tr>'
+    //         for (let j = 0; j < col; j++) {
+    //             x+='<td onclick="clickCell(this)">'+'</td>'
+    //         }x+="</tr>"
+    //     } document.getElementById('board').innerHTML=x
+    // }createBoard()
+
+    function clickCell(cell) {
+        let id = cell.id;
+        if (cell.innerHTML === '')
+            if (turn == player1) {
+                arr[id[0]][id[1]] = 2
+                turn = player2
+            } else {
+                arr[id[0]][id[1]] = 1
+                turn = player1
+            }
+        createBoard();
+        console.log(arr)
+        check(id[0], turn);
+    }
+
+    let arr = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
+
+    function createBoard() {
+        let x = '';
+        for (let i = 0; i < arr.length; i++) {
+            x += '<tr>'
+            for (let j = 0; j < arr[0].length; j++) {
+                if (arr[i][j] === 0) {
+                    x += '<td onclick="clickCell(this)" id="' + '' + i + j + '">' + '</td>'
+                }
+                if (arr[i][j] === 1) {
+                    x += '<td onclick="clickCell(this)" id="' + '' + i + j + '"> X' + '</td>'
+                }
+                if (arr[i][j] === 2) {
+                    x += '<td onclick="clickCell(this)" id="' + '' + i + j + '"> O' + '</td>'
+                }
+            }
+            x += "</tr>"
+        }
+        document.getElementById('board').innerHTML = x
+    }
+
+    createBoard();
+
+    function check(j, turn) {
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[j][i] === turn) {
+                count++;
+                if (count == 3) {
+                    alert("win")
+                    return;
+                }
+            } else {
+                count = 0;
+            }
+        }
+
+    }
+
+
+    // function win(){
+    //     let x=[]
+    //     for (let i = 0; i <=10; i++) {
+    //         for (let j = 0; j <=5; j++) {
+    //             if(i==0 & (j==0||j==1||j==2||j==3||j==4))
+    //             {alert('thang')
+    //         }
+    //
+    //     }
+    // }}
+
+</script>

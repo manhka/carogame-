@@ -6,35 +6,19 @@
 </head>
 <body>
 <form  action="translate">
-    <select name="" id="language1">
-        <option>enlish</option>
-        <option>vienamese</option>
-    </select><input type="text">
-    <br>
-    <button onclick="TranSlate">click</button>
-    <br>
-    <select name="" id="language2">
-        <option>enlish</option>
-        <option>vienamese</option>
-    </select>
-    <input type="text">
 
 </form>
 
 </body>
 </html>
 <script>
-    let x=0
-    let English = ['pen', 'cat', 'dog']
-    let Vietnamese = ['but', 'meo', 'cho']
-
-
-    // function TranSlate()
-    // {
-    //     for (let i = 0; i < English.length; i++) {
-    //         }
-    //         for (let j = 0; j < Vietnamese.length; j++) {
-    //         }
-    //
-    // }
+    let english=['cat', 'dog','fish']
+    let vietnamese =['meo','cho','ca']
+    let tucantim=prompt('nhap tu can tim')
+    let vitri = english.indexOf(tucantim)
+    if (vitri==-1){
+        document.write('khong co tu nay nhe bro')
+    } else{
+        document.write(vietnamese[vitri])
+    }
 </script>
